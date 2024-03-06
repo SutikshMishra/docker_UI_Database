@@ -1,5 +1,8 @@
+// App.js
+
 import React, { useState } from 'react';
-//hello
+import './App.css'; // Import your CSS file for styling
+
 function App() {
   const [selectedOption, setSelectedOption] = useState('');
   const [inputValues, setInputValues] = useState({
@@ -32,14 +35,31 @@ function App() {
   };
 
   const handleSubmit = () => {
-    // Handle form submission here
-    console.log("Form submitted");
+    // Make a POST request to the backend endpoint
+    fetch('http://localhost:5000/run-mvn-install', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('mvn install command executed successfully');
+        } else {
+          console.error('Failed to execute mvn install command');
+        }
+      })
+      .catch(error => {
+        console.error('Error while executing mvn install command:', error);
+      });
   };
+  
 
   const renderFileFormatDropdown = () => {
     return (
       <>
-        <div>
+        <div className="input-group">
           <label htmlFor="fileFormatDropdown">File Format:</label>
           <select id="fileFormatDropdown">
             <option value="parquet">Parquet</option>
@@ -53,7 +73,7 @@ function App() {
   const renderActionDropdown = () => {
     return (
       <>
-        <div>
+        <div className="input-group">
           <label htmlFor="actionDropdown">Action:</label>
           <select id="actionDropdown">
             <option value="read">Read</option>
@@ -68,7 +88,7 @@ function App() {
   const renderInput = () => {
       return (
         <>
-          <div>
+          <div className="input-group">
             <label htmlFor="inputField">Input:</label>
             <input type="text" id="inputField" />
           </div>
@@ -103,19 +123,21 @@ function App() {
             </>
           )}
           {inputValues[selectedOption].map((inputValue, index) => (
-            <input
-              key={index}
-              type="text"
-              value={inputValue}
-              onChange={(e) => handleInputChange(selectedOption, index, e.target.value)}
-            />
+            <div className="input-group" key={index}>
+              <label htmlFor={`input_${index + 1}`}>{`Input ${index + 1}:`}</label>
+              <input
+                type="text"
+                id={`input_${index + 1}`}
+                value={inputValue}
+                onChange={(e) => handleInputChange(selectedOption, index, e.target.value)}
+              />
+            </div>
           ))}
           <button onClick={handleSubmit}>Submit</button>
         </>
       )}
-
-
     </div>
   );
 }
+
 export default App;
