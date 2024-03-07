@@ -21,7 +21,8 @@ app.post('/run-mvn-install', (req, res) => {
     }
     console.log(`stdout: ${stdout}`);
     console.error(`stderr: ${stderr}`);
-    res.send('mvn install command executed successfully');
+    // Assuming the JAR file is created in a directory named 'target'
+    res.sendFile('C:\Users\sutik\IdeaProjects\gkc-aws-pipeline\target\gkc-aws-pipeline-1.0-SNAPSHOT.jar'); // Adjust the path accordingly
   });
 });
 

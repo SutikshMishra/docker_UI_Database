@@ -10,6 +10,7 @@ function App() {
     option2: [],
     option3: []
   });
+  const [downloadUrl, setDownloadUrl] = useState('');
 
   const handleDropdownChange = (e) => {
     const selectedValue = e.target.value;
@@ -53,6 +54,18 @@ function App() {
       .catch(error => {
         console.error('Error while executing mvn install command:', error);
       });
+  };
+
+  const handleDownload = () => {
+    // Fetch the JAR file from the server
+    fetch('http://localhost:5000/run-mvn-install')
+      .then(response => response.blob())
+      .then(blob => {
+        // Create a temporary URL for the downloaded file
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        setDownloadUrl(url);
+      })
+      .catch(error => console.error('Error downloading JAR file:', error));
   };
   
 
@@ -133,10 +146,16 @@ function App() {
               />
             </div>
           ))}
-          <button onClick={handleSubmit}>Submit</button>
-        </>
-      )}
-    </div>
+          <button onClick={handleSubmit}>Submit</button><br></br><br></br>
+          <button onClick={handleDownload}>Download JAR</button>
+          {downloadUrl && (
+          <a href={downloadUrl} download="gkc-aws-pipeline-1.0-SNAPSHOT.jar">
+            Click to download
+          </a>
+          )}
+          </>
+          )}
+          </div>
   );
 }
 
