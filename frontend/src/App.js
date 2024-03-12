@@ -36,7 +36,7 @@ function App() {
   };
 
   const handleSubmit = () => {
-    // Make a POST request to the backend endpoint
+    // Make a POST request to the backend endpoint to trigger mvn clean install
     fetch('http://localhost:5000/run-mvn-install', {
       method: 'POST',
       headers: {
@@ -46,13 +46,15 @@ function App() {
     })
       .then(response => {
         if (response.ok) {
-          console.log('mvn install command executed successfully');
+          console.log('mvn clean install command executed successfully');
+          // If mvn clean install is successful, trigger the download
+          handleDownload();
         } else {
-          console.error('Failed to execute mvn install command');
+          console.error('Failed to execute mvn clean install command');
         }
       })
       .catch(error => {
-        console.error('Error while executing mvn install command:', error);
+        console.error('Error while executing mvn clean install command:', error);
       });
   };
 
