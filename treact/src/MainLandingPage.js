@@ -13,16 +13,20 @@ import { LogoLink } from "components/headers/light.js";
 import { SectionHeading as HeadingBase } from "components/misc/Headings";
 import { SectionDescription as DescriptionBase } from "components/misc/Typography";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
- 
+
+
 // import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 // import { ReactComponent as RadioIcon } from "feather-icons/dist/icons/radio.svg";
 // import { ReactComponent as HandleIcon } from "images/handle-icon.svg";
 // import { ReactComponent as ArrowRightIcon } from "images/arrow-right-3-icon.svg";
- 
+
 import heroScreenshotImageSrc from "images/demo/MainLandingPageHero.png";
 // import logo from "images/logo.svg";
 import useInView from "helpers/useInView";
- 
+import AboutUs from "pages/AboutUs";
+import { Link } from "react-router-dom";
+
+
 /* Hero */
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
@@ -31,12 +35,12 @@ const PrimaryNavLink = tw(
   NavLink
 )`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
 const HeroRow = tw(Row)`flex-col lg:flex-row justify-between items-center pt-8 lg:pt-12 pb-16 max-w-screen-2xl mx-auto flex-wrap`;
- 
+
 const Column = tw.div`flex-1`;
- 
+
 const UpdateNotice = tw(Column)`w-full flex-auto mb-4 sm:mb-8 rounded px-4 py-3 sm:px-5 sm:py-4 bg-orange-100 text-orange-800 flex items-center sm:items-start md:items-center justify-center lg:justify-start border border-orange-200 text-xs sm:text-sm text-center sm:text-left md:leading-none`;
 // const UpdateNoticeIcon = tw(RadioIcon)`w-0 sm:w-5 sm:mr-3`;
- 
+
 const TextColumn = tw(Column)`mx-auto lg:mr-0 max-w-2xl lg:max-w-xl xl:max-w-2xl flex-shrink-0`;
 const Heading = tw(HeadingBase)`text-center lg:text-left text-primary-900 leading-snug`;
 const Description = tw(
@@ -57,11 +61,11 @@ const FeatureText = tw.p`ml-2 font-medium text-gray-700`;
 const ImageColumn = tw(Column)`mx-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-8`;
 const ImageContainer = tw.div``;
 const Image = tw.img`max-w-full rounded-t sm:rounded`;
- 
+
 const SectionContainer = tw(ContentWithVerticalPadding)``;
 const SectionHeading = tw(HeadingBase)`text-primary-900`;
 const SectionDescription = tw(DescriptionBase)`text-center mx-auto text-gray-600 max-w-4xl`;
- 
+
 const PreviewCards = tw.div`flex flex-wrap -mr-12`;
 const PreviewCardContainer = tw.div`mt-24 mx-auto md:mx-0 max-w-lg w-full md:w-1/2 lg:w-1/3 pr-12`;
 const PreviewCard = tw(motion.a)`block rounded-lg shadow-raised`;
@@ -71,7 +75,7 @@ const PreviewCardImage = styled(motion.div)`
   ${tw`h-128 md:h-144 bg-cover bg-left-top`}
 `;
 const PreviewButton = tw(PrimaryButtonBase)`w-full rounded-b-lg rounded-t-none py-5 font-semibold`;
- 
+
 const ComponentsContainer = tw.div`mt-24`;
 const ComponentsType = tw.h3`text-4xl font-black text-primary-500 border-b-4 border-primary-500 inline-block`;
 const Components = tw.div``;
@@ -87,7 +91,7 @@ const ResizableBox = styled(Rnd)`
   }
 `;
 const ResizeHandleButton = tw.button`cursor-col-resize focus:outline-none w-4 border-l bg-gray-100 absolute right-0 inset-y-0`;
- 
+
 export default ({
   features = null,
   primaryButtonUrl = "#landingPageDemos",
@@ -109,7 +113,7 @@ export default ({
     window.gtag("js", new Date());
     window.gtag("config", "UA-45799926-9");
   }, [])
- 
+
   const previewImageAnimationVariants = {
     rest: {
       backgroundPositionY: "0%"
@@ -119,11 +123,11 @@ export default ({
       transition: { type: "tween", ease: "linear", duration: 5 }
     }
   };
- 
+
   const noOfLandingPages = Object.keys(landingPages).length;
   const noOfInnerPages = Object.keys(innerPages).length;
   const noOfComponentBlocks = Object.values(blocks).reduce((acc, block) => acc + Object.keys(block.elements).length, 0);
- 
+
   features = features || [
     `${noOfLandingPages} Landing Page Demos`,
     `${noOfInnerPages} Inner Pages`,
@@ -132,7 +136,8 @@ export default ({
     "Fully Responsive",
     "Fully Customizable"
   ];
- 
+
+
   return (
     <AnimationRevealPage disabled>
       <Container tw="bg-gray-100 -mx-8 -mt-8 pt-8 px-8">
@@ -161,45 +166,41 @@ export default ({
               </PrimaryNavLink>
             </div>
           </NavRow>
- 
           <HeroRow>
-          <nav className='main-nav'>
+            <nav className='main-nav'>
               <ul className='nav-menu'>
                 <li className='nav-item dropdown'>
                   <a>Scripts & Code</a>
                   <div className='dropdown-content'>
-                    <a href='/'>Home Page</a>
-                    <a>Option 2</a>
-                    <a>Option 3</a>
+                    <Link to="/RedirectPage">Option 1</Link>
+                    <Link to="/RedirectPage">Option 2</Link>
                   </div>
                 </li>
                 <li className='nav-item dropdown'>
                   <a>App Template</a>
                   <div className='dropdown-content'>
-                    <a href='/'>Home Page</a>
-                    <a>Option 2</a>
-                    <a>Option 3</a>
+                    <Link to="/RedirectPage">Option 1</Link>
+                    <Link to="/RedirectPage">Option 2</Link>                  
                   </div>
                 </li>
                 <li className='nav-item dropdown'>
                   <a>Themes</a>
                   <div className='dropdown-content'>
-                    <a href='/'>Home Page</a>
-                    <a>Option 2</a>
-                    <a>Option 3</a>
+                    <Link to="/RedirectPage">Option 1</Link>
+                    <Link to="/RedirectPage">Option 2</Link>
                   </div>
                 </li>
                 <li className='nav-item dropdown'>
                   <a>Plugins</a>
                   <div className='dropdown-content'>
                     <a href='/'>Home Page</a>
-                    <a>Option 2</a>
-                    <a>Option 3</a>
+                    <Link to="/RedirectPage">Option 1</Link>
+                    <Link to="/RedirectPage">Option 2</Link>               
                   </div>
                 </li>
               </ul>
             </nav>
-         
+
             <TextColumn>
               <Heading as="h1">{heading}</Heading>
               <Description>{description}</Description>
@@ -224,8 +225,8 @@ export default ({
               </ImageContainer>
             </ImageColumn>
           </HeroRow>
-         
-       
+
+
           <SectionContainer id="landingPageDemos">
             <SectionHeading>Landing Pages</SectionHeading>
             <SectionDescription>
@@ -272,7 +273,7 @@ export default ({
               ))}
             </PreviewCards>
           </SectionContainer>
-          
+
           <SectionContainer id="componentDemos">
             <SectionHeading>Component Blocks</SectionHeading>
             <SectionDescription>
@@ -290,15 +291,15 @@ export default ({
     </AnimationRevealPage>
   );
 };
- 
+
 const BlocksRenderer = ({ blocks }) => {
   const [lastVisibleBlockIndex, setLastVisibleBlockIndex] = useState(0);
- 
+
   const updateLastVisibleBlockIndex = index => {
     console.log("LAST WAS ", lastVisibleBlockIndex);
     if (index > lastVisibleBlockIndex) setLastVisibleBlockIndex(index);
   };
- 
+
   return (
     <ComponentsContainer>
       {blocks.map(
@@ -310,27 +311,27 @@ const BlocksRenderer = ({ blocks }) => {
     </ComponentsContainer>
   );
 };
- 
+
 const Block = ({ notifyIsVisible, components }) => {
   const [ref, inView] = useInView();
- 
+
   useEffect(() => {
     if (inView) notifyIsVisible();
   }, [inView, notifyIsVisible]);
- 
+
   const ResizeHandle = (
     <ResizeHandleButton>
       {/* <HandleIcon tw="w-4 h-4 text-gray-600" /> */}
     </ResizeHandleButton>
   );
- 
+
   const componentBlockRefs = {};
- 
+
   const updateComponentBlockIframeHeight = iframe => {
     iframe.style.height = "auto";
     iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
   };
- 
+
   return (
     <div ref={ref} tw="mt-32">
       <ComponentsType>{components.type}</ComponentsType>
