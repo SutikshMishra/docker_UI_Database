@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css'; // External CSS file for styling
+import './Login_Signup.css'; // External CSS file for styling
 
 function App() {
   const [username, setUsername] = useState('');

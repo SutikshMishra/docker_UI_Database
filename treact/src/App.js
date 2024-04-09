@@ -108,6 +108,7 @@ import ThankYouPage from "ThankYouPage.js";
 
 import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import RedirectPage from 'pages/RedirectPage';
+import Login_Signup from "pages/Login_Signup";
 
 
 export default function App() {
@@ -125,6 +126,7 @@ export default function App() {
           <Route path="/components/:type/:name" element={<ComponentRenderer />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/RedirectPage" element={<RedirectPage />} />
+          <Route path="/Login_Signup" element={<Login_Signup />} />
       
 
           

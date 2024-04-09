@@ -27,6 +27,7 @@ import AboutUs from "pages/AboutUs";
 import { Link } from "react-router-dom";
 
 
+
 /* Hero */
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
@@ -161,9 +162,11 @@ export default ({
                 Hire Me!
               </NavLink>
               <div tw="md:hidden flex-100 h-0"></div>
-              <Link to="/LoginPage">
-                Sign-Up
-              </Link>
+              <PrimaryNavLink target="_blank"> 
+              <Link to="/Login_Signup">
+                Login/Sign-Up
+                </Link>
+              </PrimaryNavLink>
             </div>
           </NavRow>
           <HeroRow>
