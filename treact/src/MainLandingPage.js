@@ -161,9 +161,9 @@ export default ({
                 Hire Me!
               </NavLink>
               <div tw="md:hidden flex-100 h-0"></div>
-              <PrimaryNavLink target="_blank" href="https://gum.co/QaruQ">
-                Download Now
-              </PrimaryNavLink>
+              <Link to="/LoginPage">
+                Sign-Up
+              </Link>
             </div>
           </NavRow>
           <HeroRow>
