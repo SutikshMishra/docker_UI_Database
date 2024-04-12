@@ -1,61 +1,97 @@
-/* index.css */
+/* Container for the entire form */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f2f5;
-  }
-  
-  .login-box {
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  .login-box.slide-up {
-    transform: translateY(-20px);
-  }
-  
-  .login-box h2 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .login-box input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .login-box button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .login-box button:hover {
-    background-color: #0056b3;
-  }
-  
-  .login-box p {
-    text-align: center;
-    color: #666;
-    cursor: pointer;
-  }
-  
-  .login-box p:hover {
-    color: #007bff;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f7f7f7; /* Light grey background */
+}
+
+/* Box containing the form */
+.login-box {
+  width: 350px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.slide-up {
+  transform: translateY(-20px); /* Slight raise effect when toggling forms */
+}
+
+/* Form title */
+h2 {
+  text-align: center;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Styling for input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+input.error {
+  border-color: #e63946; /* Red border for error */
+}
+
+/* Error message styling */
+.error-msg {
+  color: #e63946; /* Red text for errors */
+  font-size: 0.8em;
+  height: 18px;
+}
+
+/* Styling for buttons */
+/* Styling for buttons */
+button {
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+
+button:hover {
+  background-color: #4CAF50; /* Green background on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+
+/* Paragraph for toggling between sign up and login */
+p {
+  color: #555;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+/* Adds a little space around the form for better aesthetics */
+.login-box {
+  margin: 0 20px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Adds a subtle hover effect to the toggle paragraph */
+p:hover {
+  text-decoration: underline;
+}
