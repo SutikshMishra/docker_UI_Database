@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { Rnd } from 'react-rnd';
@@ -26,12 +27,11 @@ import { PrimaryButton as PrimaryButtonBase } from 'components/misc/Buttons.js';
 import heroScreenshotImageSrc from 'images/demo/MainLandingPageHero.png';
 // import logo from "images/logo.svg";
 import useInView from 'helpers/useInView';
-import Frontend from './pages/RedirectPage';
+import Frontend from 'components/frontend/frontend';
 import ImageSlider from 'components/ImageSlider/ImageSlider';
 import imageOne from '../src/images/slider/slide_01.jpg';
 import imageTwo from '../src/images/slider/slide_02.jpg';
 import imageThree from '../src/images/slider/slide_03.jpg';
-import { Link } from 'react-router-dom';
  
 /* Hero */
 const Row = tw.div`flex`;
@@ -126,13 +126,12 @@ export default ({
   heading = 'Free Modern React Templates for every need.',
   description = 'Easily customizable modern React UI Templates and Components built using TailwindCSS which are also lightweight and simple to setup. All components are modular and fully responsive for great mobile experience as well as big desktop screens.  Brand Colors are also fully customizable. Free for personal as well as commercial use.',
 }) => {
-  
   /*
    * Using gtag like this because we only want to use Google Analytics when Main Landing Page is rendered
    * Remove this part and the the gtag script inside public/index.html if you dont need google analytics
    */
-   
-    const [displayFrontEnd, setDisplayFrontEnd] = useState(false);
+ 
+  const [displayFrontEnd, setDisplayFrontEnd] = useState(false);
  
   useEffect(() => {
     window.gtag('js', new Date());
@@ -169,7 +168,7 @@ export default ({
  
   return (
     <>
-    {displayFrontEnd && <Frontend setDisplayFrontEnd={setDisplayFrontEnd} />}  
+      {displayFrontEnd && <Frontend setDisplayFrontEnd={setDisplayFrontEnd} />}
       <AnimationRevealPage disabled>
         <Container tw='bg-gray-100 -mx-8 -mt-8'>
           <Content2Xl>
@@ -200,6 +199,7 @@ export default ({
                 </PrimaryNavLink>
               </div>
             </NavRow> */}
+ 
             <HeroRow>
               {/* <UpdateNotice>
                
@@ -218,47 +218,40 @@ export default ({
                       paddingTop: '5px',
                       color: 'white',
                     }}>
-                    GKCodelabs
+                    Treact
                   </LogoLink>
                   <nav className='main-nav'>
                     <ul className='nav-menu'>
-                      
                       <li className='nav-item dropdown'>
                         <a>Scripts & Code</a>
                         <div className='dropdown-content'>
-                           <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
+                          <a
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => {
+                              setDisplayFrontEnd(true);
+                            }}>
+                            Home Page
+                          </a>
+                          <a>Option 2</a>
+                          <a>Option 3</a>
                         </div>
                       </li>
-                      <li className='nav-item dropdown'>
-                        <a>App Templates</a>
-                        <div className='dropdown-content'>                       
-                        <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
-                        </div>
+                      <li className='nav-item'>
+                        <a>App Template</a>
                       </li>
-                      <li className='nav-item dropdown'>
+                      <li className='nav-item'>
                         <a>Themes</a>
-                        <div className='dropdown-content'>
-                        <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
-                        </div>
                       </li>
-                      <li className='nav-item dropdown'>
+                      <li className='nav-item'>
                         <a>Plugins</a>
-                        <div className='dropdown-content'>
-                        <a href='/'>Home Page</a>
-                        <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
-                        </div>
                       </li>
-                       <li className='nav-item'>
+                      {/* <li>
                         <PrimaryNavLink
                           target='_blank'
-                          href='/login'>
+                          href='https://gum.co/QaruQ'>
                           Login / Sign Up
                         </PrimaryNavLink>
-                      </li> 
+                      </li> */}
                     </ul>
                   </nav>
                 </div>

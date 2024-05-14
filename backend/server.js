@@ -11,7 +11,7 @@ app.use(cors());
 // API endpoint to execute mvn install command
 app.post('/run-mvn-install', (req, res) => {
   // Change directory to C:\Users\sutiksh\IdeaProjects\gkc-aws-pipeline
-  const cwd = 'C:\\Users\\ASUS\\Desktop\\gkc-aws-pipeline';
+  const cwd = 'C:\Users\ASUS\Desktop\gkc-aws-pipeline';
   
   // Execute mvn install command in the specified directory
   exec('mvn clean install', { cwd }, (error, stdout, stderr) => {
