@@ -32,6 +32,7 @@ import imageOne from '../src/images/slider/slide_01.jpg';
 import imageTwo from '../src/images/slider/slide_02.jpg';
 import imageThree from '../src/images/slider/slide_03.jpg';
 import { Link } from 'react-router-dom';
+import ServiceCards from 'components/services/ServiceCards';
  
 /* Hero */
 const Row = tw.div`flex`;
@@ -262,6 +263,7 @@ export default ({
                     </ul>
                   </nav>
                 </div>
+                <ServiceCards />
               </div>
               <TextColumn>
                 <Heading as='h1'>{heading}</Heading>
