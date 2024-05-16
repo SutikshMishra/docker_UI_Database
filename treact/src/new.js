@@ -4,10 +4,7 @@ import { Rnd } from 'react-rnd';
 import { motion } from 'framer-motion';
 import { components } from 'ComponentRenderer.js';
 import AnimationRevealPage from 'helpers/AnimationRevealPage.js';
-import {
-  Container,
-  Content2Xl,
-  ContentWithVerticalPadding,
+import {Container,Content2Xl, ContentWithVerticalPadding,
 } from 'components/misc/Layouts';
 import tw from 'twin.macro';
 import styled from 'styled-components';
@@ -17,23 +14,20 @@ import { LogoLink } from 'components/headers/light.js';
 import { SectionHeading as HeadingBase } from 'components/misc/Headings';
 import { SectionDescription as DescriptionBase } from 'components/misc/Typography';
 import { PrimaryButton as PrimaryButtonBase } from 'components/misc/Buttons.js';
- 
+
 // import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 // import { ReactComponent as RadioIcon } from "feather-icons/dist/icons/radio.svg";
 // import { ReactComponent as HandleIcon } from "images/handle-icon.svg";
 // import { ReactComponent as ArrowRightIcon } from "images/arrow-right-3-icon.svg";
- 
+
 import heroScreenshotImageSrc from 'images/demo/MainLandingPageHero.png';
 // import logo from "images/logo.svg";
-import useInView from "helpers/useInView";
-import AboutUs from "pages/AboutUs";
-import { Link } from "react-router-dom";
-import Frontend from './pages/RedirectPage';
+import useInView from 'helpers/useInView';
+// import Frontend from 'components/frontend/frontend';
 import ImageSlider from 'components/ImageSlider/ImageSlider';
 import imageOne from '../src/images/slider/slide_01.jpg';
 import imageTwo from '../src/images/slider/slide_02.jpg';
 import imageThree from '../src/images/slider/slide_03.jpg';
-import ServiceCards from 'components/services/ServiceCards';
 
 /* Hero */
 const Row = tw.div`flex`;
@@ -44,15 +38,15 @@ const PrimaryNavLink = tw(
 )`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
 const HeroRow = tw(
   Row,
-)`flex-col lg:flex-row justify-between items-center pb-16 max-w-screen-2xl mx-auto flex-wrap`;
- 
+)`flex-col lg:flex-row justify-between items-center pt-8 lg:pt-12 pb-16 max-w-screen-2xl mx-auto flex-wrap`;
+
 const Column = tw.div`flex-1`;
- 
+
 const UpdateNotice = tw(
   Column,
 )`w-full flex-auto mb-4 sm:mb-8 rounded px-4 py-3 sm:px-5 sm:py-4 bg-orange-100 text-orange-800 flex items-center sm:items-start md:items-center justify-center lg:justify-start border border-orange-200 text-xs sm:text-sm text-center sm:text-left md:leading-none`;
 // const UpdateNoticeIcon = tw(RadioIcon)`w-0 sm:w-5 sm:mr-3`;
- 
+
 const TextColumn = tw(
   Column,
 )`mx-auto lg:mr-0 max-w-2xl lg:max-w-xl xl:max-w-2xl flex-shrink-0`;
@@ -77,13 +71,13 @@ const FeatureText = tw.p`ml-2 font-medium text-gray-700`;
 const ImageColumn = tw(Column)`mx-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-8`;
 const ImageContainer = tw.div``;
 const Image = tw.img`max-w-full rounded-t sm:rounded`;
- 
+
 const SectionContainer = tw(ContentWithVerticalPadding)``;
 const SectionHeading = tw(HeadingBase)`text-primary-900`;
 const SectionDescription = tw(
   DescriptionBase,
 )`text-center mx-auto text-gray-600 max-w-4xl`;
- 
+
 const PreviewCards = tw.div`flex flex-wrap -mr-12`;
 const PreviewCardContainer = tw.div`mt-24 mx-auto md:mx-0 max-w-lg w-full md:w-1/2 lg:w-1/3 pr-12`;
 const PreviewCard = tw(motion.a)`block rounded-lg shadow-raised`;
@@ -98,7 +92,7 @@ const PreviewCardImage = styled(motion.div)`
 const PreviewButton = tw(
   PrimaryButtonBase,
 )`w-full rounded-b-lg rounded-t-none py-5 font-semibold`;
- 
+
 const ComponentsContainer = tw.div`mt-24`;
 const ComponentsType = tw.h3`text-4xl font-black text-primary-500 border-b-4 border-primary-500 inline-block`;
 const Components = tw.div``;
@@ -114,7 +108,7 @@ const ResizableBox = styled(Rnd)`
   }
 `;
 const ResizeHandleButton = tw.button`cursor-col-resize focus:outline-none w-4 border-l bg-gray-100 absolute right-0 inset-y-0`;
- 
+
 export default ({
   features = null,
   primaryButtonUrl = '#landingPageDemos',
@@ -128,19 +122,18 @@ export default ({
   heading = 'Free Modern React Templates for every need.',
   description = 'Easily customizable modern React UI Templates and Components built using TailwindCSS which are also lightweight and simple to setup. All components are modular and fully responsive for great mobile experience as well as big desktop screens.  Brand Colors are also fully customizable. Free for personal as well as commercial use.',
 }) => {
-  
   /*
    * Using gtag like this because we only want to use Google Analytics when Main Landing Page is rendered
    * Remove this part and the the gtag script inside public/index.html if you dont need google analytics
    */
-   
-    const [displayFrontEnd, setDisplayFrontEnd] = useState(false);
- 
+
+//   const [displayFrontEnd, setDisplayFrontEnd] = useState(false);
+
   useEffect(() => {
     window.gtag('js', new Date());
     window.gtag('config', 'UA-45799926-9');
   }, []);
- 
+
   const previewImageAnimationVariants = {
     rest: {
       backgroundPositionY: '0%',
@@ -150,14 +143,14 @@ export default ({
       transition: { type: 'tween', ease: 'linear', duration: 5 },
     },
   };
- 
+
   const noOfLandingPages = Object.keys(landingPages).length;
   const noOfInnerPages = Object.keys(innerPages).length;
   const noOfComponentBlocks = Object.values(blocks).reduce(
     (acc, block) => acc + Object.keys(block.elements).length,
     0,
   );
- 
+
   features = features || [
     `${noOfLandingPages} Landing Page Demos`,
     `${noOfInnerPages} Inner Pages`,
@@ -166,19 +159,18 @@ export default ({
     'Fully Responsive',
     'Fully Customizable',
   ];
- 
+
   const images = [imageTwo, imageOne, imageThree];
- 
+
   return (
     <>
-    {displayFrontEnd && <Frontend setDisplayFrontEnd={setDisplayFrontEnd} />}  
+      {/* {displayFrontEnd && <Frontend setDisplayFrontEnd={setDisplayFrontEnd} />} */}
       <AnimationRevealPage disabled>
-        <Container tw='bg-gray-100 -mx-8 -mt-8'>
+        <Container tw='bg-gray-100 -mx-8 -mt-8 pt-8 px-8'>
           <Content2Xl>
-            {/*
-             <NavRow>
+            <NavRow>
               <LogoLink href='/'>
-               
+                {/* <img src={logo} alt="" /> */}
                 Treact
               </LogoLink>
               <div tw='flex flex-wrap justify-center lg:justify-end items-center -mr-12'>
@@ -201,70 +193,44 @@ export default ({
                   Download Now
                 </PrimaryNavLink>
               </div>
-            </NavRow> */}
+            </NavRow>
             <HeroRow>
-              {/* <UpdateNotice>
-               
+              <UpdateNotice>
+                {/* <UpdateNoticeIcon /> */}
                 Last updated on 10th September, 2022 - Added support for React
                 v18 and TailwindCSS v3!
-              </UpdateNotice> */}
+              </UpdateNotice>
               <div style={{ position: 'relative' }}>
                 <ImageSlider images={images} style={{ position: 'absolute' }} />
                 <div style={{ position: 'absolute', top: '0px' }}>
-                  <LogoLink
-                    href='/'
-                    style={{
-                      position: 'absolute',
-                      top: '0px',
-                      paddingLeft: '10px',
-                      paddingTop: '5px',
-                      color: 'white',
-                    }}>
-                    GKCodelabs
-                  </LogoLink>
                   <nav className='main-nav'>
                     <ul className='nav-menu'>
-                      
                       <li className='nav-item dropdown'>
                         <a>Scripts & Code</a>
                         <div className='dropdown-content'>
-                           <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
+                          <a
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => {
+                            //   setDisplayFrontEnd(true);
+                            }}>
+                            Home Page
+                          </a>
+                          <a>Option 2</a>
+                          <a>Option 3</a>
                         </div>
                       </li>
-                      <li className='nav-item dropdown'>
-                        <a>App Templates</a>
-                        <div className='dropdown-content'>                       
-                        <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
-                        </div>
+                      <li className='nav-item'>
+                        <a>App Template</a>
                       </li>
-                      <li className='nav-item dropdown'>
+                      <li className='nav-item'>
                         <a>Themes</a>
-                        <div className='dropdown-content'>
-                        <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
-                        </div>
                       </li>
-                      <li className='nav-item dropdown'>
+                      <li className='nav-item'>
                         <a>Plugins</a>
-                        <div className='dropdown-content'>
-                        <a href='/'>Home Page</a>
-                        <Link to="/RedirectPage">Option 1</Link>
-                            <Link to="/RedirectPage">Option 2</Link>
-                        </div>
                       </li>
-                       <li className='nav-item'>
-                        <PrimaryNavLink
-                          target='_blank'
-                          href='/login'>
-                          Login / Sign Up
-                        </PrimaryNavLink>
-                      </li> 
                     </ul>
                   </nav>
                 </div>
-                <ServiceCards />
               </div>
               <TextColumn>
                 <Heading as='h1'>{heading}</Heading>
@@ -292,7 +258,7 @@ export default ({
                 </ImageContainer>
               </ImageColumn>
             </HeroRow>
- 
+
             <SectionContainer id='landingPageDemos'>
               <SectionHeading>Landing Pages</SectionHeading>
               <SectionDescription>
@@ -356,7 +322,7 @@ export default ({
                 ))}
               </PreviewCards>
             </SectionContainer>
- 
+
             <SectionContainer id='componentDemos'>
               <SectionHeading>Component Blocks</SectionHeading>
               <SectionDescription>
@@ -376,15 +342,15 @@ export default ({
     </>
   );
 };
- 
+
 const BlocksRenderer = ({ blocks }) => {
   const [lastVisibleBlockIndex, setLastVisibleBlockIndex] = useState(0);
- 
+
   const updateLastVisibleBlockIndex = (index) => {
     console.log('LAST WAS ', lastVisibleBlockIndex);
     if (index > lastVisibleBlockIndex) setLastVisibleBlockIndex(index);
   };
- 
+
   return (
     <ComponentsContainer>
       {blocks.map(
@@ -400,28 +366,28 @@ const BlocksRenderer = ({ blocks }) => {
     </ComponentsContainer>
   );
 };
- 
+
 const Block = ({ notifyIsVisible, components }) => {
   const [ref, inView] = useInView();
- 
+
   useEffect(() => {
     if (inView) notifyIsVisible();
   }, [inView, notifyIsVisible]);
- 
+
   const ResizeHandle = (
     <ResizeHandleButton>
       {/* <HandleIcon tw="w-4 h-4 text-gray-600" /> */}
     </ResizeHandleButton>
   );
- 
+
   const componentBlockRefs = {};
- 
+
   const updateComponentBlockIframeHeight = (iframe) => {
     iframe.style.height = 'auto';
     iframe.style.height =
       iframe.contentWindow.document.body.scrollHeight + 'px';
   };
- 
+
   return (
     <div ref={ref} tw='mt-32'>
       <ComponentsType>{components.type}</ComponentsType>
@@ -470,4 +436,3 @@ const Block = ({ notifyIsVisible, components }) => {
     </div>
   );
 };
- 
