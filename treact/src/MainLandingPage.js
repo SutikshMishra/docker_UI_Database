@@ -25,15 +25,16 @@ import { PrimaryButton as PrimaryButtonBase } from 'components/misc/Buttons.js';
  
 import heroScreenshotImageSrc from 'images/demo/MainLandingPageHero.png';
 // import logo from "images/logo.svg";
-import useInView from 'helpers/useInView';
+import useInView from "helpers/useInView";
+import AboutUs from "pages/AboutUs";
+import { Link } from "react-router-dom";
 import Frontend from './pages/RedirectPage';
 import ImageSlider from 'components/ImageSlider/ImageSlider';
 import imageOne from '../src/images/slider/slide_01.jpg';
 import imageTwo from '../src/images/slider/slide_02.jpg';
 import imageThree from '../src/images/slider/slide_03.jpg';
-import { Link } from 'react-router-dom';
 import ServiceCards from 'components/services/ServiceCards';
- 
+
 /* Hero */
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
