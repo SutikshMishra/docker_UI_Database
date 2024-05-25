@@ -254,12 +254,11 @@ export default ({
                             <Link to="/RedirectPage">Option 2</Link>
                         </div>
                       </li>
-                       <li className='nav-item'>
-                        <PrimaryNavLink
-                          target='_blank'
-                          href='/login'>
-                          Login / Sign Up
-                        </PrimaryNavLink>
+                      <li className='nav-item'>
+                        <div tw="md:hidden flex-100 h-0"></div>
+                        <PrimaryNavLink style={{ padding:'0px'}} target='_blank'>
+                        <Link to="/Login_Signup">Login/Sign-Up</Link>
+                        </PrimaryNavLink> 
                       </li> 
                     </ul>
                   </nav>

@@ -110,8 +110,6 @@ import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import RedirectPage from 'pages/RedirectPage';
 
 import Login_Signup from "pages/Login_Signup";
-
-
 import ServiceCards from "components/services/ServiceCards.js";
 
 

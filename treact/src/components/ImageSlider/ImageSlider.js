@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import '../../../src/style.css';
-
+ 
 const ImageSlider = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+ 
   const handlePrev = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1,
     );
   };
-
+ 
   const handleNext = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1,
     );
   };
-
+ 
   return (
     <div className='image-slider'>
       <img
@@ -26,8 +26,7 @@ const ImageSlider = ({ images }) => {
         <div
           onClick={handlePrev}
           style={{
-      padding: '15px',
-            
+            padding: '15px', 
           }}>
           <span
             style={{
@@ -39,10 +38,8 @@ const ImageSlider = ({ images }) => {
         </div>
         <div
           onClick={handleNext}
-          style={{
-            
-            padding: '15px',
-            
+          style={{           
+            padding: '15px', 
           }}>
           <span
             style={{
@@ -56,5 +53,5 @@ const ImageSlider = ({ images }) => {
     </div>
   );
 };
-
+ 
 export default ImageSlider;
