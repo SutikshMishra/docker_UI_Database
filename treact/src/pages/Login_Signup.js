@@ -15,6 +15,14 @@ function App() {
   const [isNewUser, setIsNewUser] = useState(false);
   const [errors, setErrors] = useState({});
 
+  /* Testing here */
+
+  const [errorFromApi, setErrorFromApi] = useState('');
+  const [signUpError, setSignUpError] = useState('');
+
+  console.log("errorFfromApi", errorFromApi);
+  console.log("signUpError: ", signUpError)
+
   
 
   const validate = () => {
@@ -46,14 +54,16 @@ function App() {
 
         })
       });
+      
       if (response.ok) {
         const { token } = await response.json();
         localStorage.setItem('token', token);
         // Redirect the user
         window.location.href = '/'; // or use useHistory from 'react-router-dom' to navigate
       } else {
-        const { error } = await response.json();
-        console.error(error);
+        const  error  = await response.json();
+        // console.error("error from login: ", JSON.stringify(error));
+        setErrorFromApi(error?.error);
       }
       //console.log('Signing up with:', email, username, password, phoneNumber);
       // Handle login logic here (authentication, validation, etc.)
@@ -84,6 +94,7 @@ function App() {
       } else {
         const { error } = await response.json();
         console.error(error);
+        setSignUpError(error);
       }
       console.log('Signing up with:', email, username, password, phoneNumber);
     }
@@ -104,6 +115,7 @@ function App() {
                 className={errors.email ? 'error' : ''}
               />
               <div className="error-msg">{errors.email}</div>
+              {signUpError === "Username already exists" || signUpError === "Email already exists" && <div>Email already exists</div>}
               <input 
                 type="text" 
                 placeholder="Phone Number"
@@ -112,6 +124,7 @@ function App() {
                 className={errors.phoneNumber ? 'error' : ''}
               />
               <div className="error-msg">{errors.phoneNumber}</div>
+              {signUpError === "Phone number already registered" && <div>Phone number already registered</div>}
             </>
           )}
           <input 
@@ -122,6 +135,8 @@ function App() {
             className={errors.username ? 'error' : ''}
           />
           <div className="error-msg">{errors.username}</div>
+          {errorFromApi === "User not found" && <div>Username incorrect</div>}
+          {signUpError === "Username already exists" && <div>Username already exists</div>}
           <input 
             type="password" 
             placeholder="Password" 
@@ -130,6 +145,7 @@ function App() {
             className={errors.password ? 'error' : ''}
           />
           <div className="error-msg">{errors.password}</div>
+          {errorFromApi === "Invalid Password" && <div> Invalid Password</div>}
           {isNewUser && (
             <>
               <input 
