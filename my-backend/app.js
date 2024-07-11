@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
 // API endpoint to execute mvn install command
 app.post('/run-mvn-install', (req, res) => {
   // Change directory to the specified path
-  const cwd = 'D:\\react test\\gkc-aws-pipeline';
+  const cwd = 'C:\\Users\\sutik\\IdeaProjects\\gkc-aws-pipeline';
 
   // Execute mvn install command in the specified directory
   exec('mvn clean install', { cwd }, (error, stdout, stderr) => {
@@ -39,7 +39,7 @@ app.post('/run-mvn-install', (req, res) => {
     console.log(`stdout: ${stdout}`);
     console.error(`stderr: ${stderr}`);
     // Assuming the JAR file is created in a directory named 'target'
-    res.sendFile('D:\\react test\\gkc-aws-pipeline\\target\\gkc-aws-pipeline-1.0-SNAPSHOT.jar'); // Adjust the path accordingly
+    res.sendFile('C:\\Users\\sutik\\IdeaProjects\\gkc-aws-pipeline\\target\\gkc-aws-pipeline-1.0-SNAPSHOT.jar'); // Adjust the path accordingly
   });
 });
 
