@@ -37,7 +37,7 @@ function RedirectPage() {
 
     const handleSubmit = () => {
         // Make a POST request to the backend endpoint to trigger mvn clean install
-        fetch('http://localhost:5000/run-mvn-install', {
+        fetch('http://localhost:4000/run-mvn-install', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ function RedirectPage() {
 
     const handleDownload = () => {
         // Fetch the JAR file from the server
-        fetch('http://localhost:5000/run-mvn-install')
+        fetch('http://localhost:4000/run-mvn-install')
             .then(response => response.blob())
             .then(blob => {
                 // Create a temporary URL for the downloaded file
