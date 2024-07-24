@@ -42,7 +42,7 @@ function App() {
 
   const handleLogin = async() => {
     if (validate()) {
-      const response = await fetch('http://localhost:4000/api/auth/login', {
+      const response = await fetch('postgres:5432/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ function App() {
   const handleSignup = async () => {
     if (validate()) {
       // Handle signup logic here (e.g., sending data to backend)
-      const response = await fetch('http://localhost:4000/api/auth/signup', {
+      const response = await fetch('postgres:5432/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
