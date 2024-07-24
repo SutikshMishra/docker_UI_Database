@@ -1,0 +1,38 @@
+/* styles.css */
+
+.service-cards-container {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.service-cards-heading {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 100%; /* Make the container full width */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.service-card {
+    cursor: pointer;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.service-title {
+    font-weight: bold;
+    color: #333; /* Change text color */
+}
